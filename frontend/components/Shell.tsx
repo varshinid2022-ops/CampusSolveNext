@@ -17,6 +17,19 @@ const links = [
   ["/about", "About", "i"],
 ] as const;
 
+const pageImages: Record<string, string> = {
+  "dashboard-workspace": "/assets/images/dashboard/dashboard-workspace.jpg",
+  "tasks-notebook": "/assets/images/tasks/tasks-notebook.jpg",
+  "add-task-desk": "/assets/images/add_task/add-task-desk.jpg",
+  "calendar-agenda": "/assets/images/calendar/calendar-agenda.jpg",
+  "analytics-screen": "/assets/images/analytics/analytics-screen.jpg",
+  "reports-office": "/assets/images/reports/reports-office.jpg",
+  "notifications-focus": "/assets/images/notifications/notifications-focus.jpg",
+  "profile-studio": "/assets/images/profile/profile-studio.jpg",
+  "settings-minimal": "/assets/images/settings/settings-minimal.jpg",
+  "about-programming": "/assets/images/about/about-programming.jpg",
+};
+
 export default function Shell({ children, page }: { children: ReactNode; page: string; pageName?: string }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -36,7 +49,7 @@ export default function Shell({ children, page }: { children: ReactNode; page: s
   }
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-background-page={page}>
       <aside className="sidebar">
         <div className="brand"><span>CS</span><strong>CampusSolve</strong></div>
         <nav>
@@ -49,7 +62,14 @@ export default function Shell({ children, page }: { children: ReactNode; page: s
         <button className="logout" onClick={logout}>Log out</button>
       </aside>
       <main className="main-content">
-        <div className="page-image" style={{ backgroundImage: `url(/assets/images/${page}.jpg)` }} />
+        <div
+          className="page-image"
+          style={{
+            backgroundImage:
+              `linear-gradient(115deg,rgba(11,11,11,.76),rgba(6,78,59,.58),rgba(11,11,11,.72)),` +
+              `url("${pageImages[page] || `/assets/images/${page}.jpg`}")`,
+          }}
+        />
         <div className="page-overlay" />
         <div className="page-content">{children}</div>
       </main>
