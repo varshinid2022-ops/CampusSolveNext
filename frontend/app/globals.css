@@ -19,12 +19,13 @@ button, input, textarea, select { font: inherit; }
               url("/assets/images/login-student.jpg") center/cover fixed no-repeat;
 }
 .auth-shell.register { background-image: linear-gradient(120deg, rgba(11,11,11,.72), rgba(6,78,59,.58), rgba(11,11,11,.68)), url("/assets/images/register-learning.jpg"); }
+.auth-shell.forgot { background-image: linear-gradient(120deg, rgba(11,11,11,.72), rgba(6,78,59,.58), rgba(11,11,11,.68)), url("/assets/images/notifications-focus.jpg"); }
 .auth-photo { margin: 32px; border-radius: 28px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,.45); min-height: calc(100vh - 64px); position: relative;
   background: url("/assets/images/login-student.jpg") center/cover no-repeat; }
 .auth-shell.register .auth-photo { background-image: url("/assets/images/register-learning.jpg"); }
 .auth-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(6,78,59,.72)); }
 .auth-panel { display:grid; place-items:center; padding:32px; }
-.card { width:min(440px,100%); border:1px solid rgba(167,243,208,.32); border-radius:24px; padding:32px; background:rgba(28,28,28,.88); backdrop-filter:blur(18px); box-shadow:0 22px 60px rgba(0,0,0,.38); }
+.card { width:min(440px,100%); border:1px solid rgba(167,243,208,.32); border-radius:24px; padding:32px; background:rgba(28,28,28,.68); backdrop-filter:blur(18px); box-shadow:0 22px 60px rgba(0,0,0,.38); }
 .card h1 { color:var(--mint); margin:0 0 8px; }
 .muted { color:#CBD5CE; }
 .field { display:grid; gap:8px; margin:16px 0; }
@@ -47,7 +48,7 @@ button, input, textarea, select { font: inherit; }
 .sidebar nav a b { color:var(--mint); width:22px; text-align:center; }
 .sidebar nav a:hover,.sidebar nav a.active { background:rgba(16,185,129,.16); border:1px solid rgba(167,243,208,.18); transform:translateX(3px); }
 .logout { margin-top:auto; border:1px solid rgba(167,243,208,.25); background:rgba(11,11,11,.5); color:white; border-radius:12px; padding:11px; cursor:pointer; }
-.main-content { position:relative; min-height:100vh; overflow:hidden; }
+.main-content { position:relative; min-height:100vh; overflow:hidden; isolation:isolate; }
 .page-image {
   position:fixed;
   inset:0 0 0 250px;
@@ -55,14 +56,14 @@ button, input, textarea, select { font: inherit; }
   background-position:center;
   background-repeat:no-repeat;
   background-attachment:fixed;
-  z-index:-2;
+  z-index:0;
   transform:scale(1.01);
   animation:backgroundBreath 18s ease-in-out infinite alternate;
 }
 .page-overlay {
   position:fixed;
   inset:0 0 0 250px;
-  z-index:-1;
+  z-index:1;
   background:linear-gradient(115deg,rgba(11,11,11,.38),rgba(6,78,59,.22),rgba(11,11,11,.48));
   pointer-events:none;
 }
@@ -70,13 +71,13 @@ button, input, textarea, select { font: inherit; }
   from { transform:scale(1.01) translate3d(0,0,0); }
   to { transform:scale(1.035) translate3d(-.25%,-.15%,0); }
 }
-.page-content { width:min(1180px,calc(100% - 48px)); margin:0 auto; padding:34px 0 60px; }
+.page-content { position:relative; z-index:2; width:min(1180px,calc(100% - 48px)); margin:0 auto; padding:34px 0 60px; }
 .hero { min-height:220px; border:1px solid rgba(167,243,208,.28); border-radius:24px; padding:38px; display:flex; align-items:flex-end; margin-bottom:22px; background:linear-gradient(90deg,rgba(11,11,11,.88),rgba(6,78,59,.42)),var(--hero); background-size:cover; background-position:center; box-shadow:0 20px 50px rgba(0,0,0,.32); }
 .hero h1 { font-size:clamp(2rem,5vw,3.6rem); margin:0; color:var(--mint); }
 .hero p { margin:8px 0 0; }
 .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
 .cards-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-.panel { border:1px solid rgba(167,243,208,.28); background:rgba(28,28,28,.78); backdrop-filter:blur(16px); border-radius:18px; padding:20px; box-shadow:0 14px 36px rgba(0,0,0,.28); }
+.panel { border:1px solid rgba(167,243,208,.28); background:rgba(28,28,28,.66); backdrop-filter:blur(16px); border-radius:18px; padding:20px; box-shadow:0 14px 36px rgba(0,0,0,.28); }
 .hero,.panel,.card,.toolbar,.task-row {
   box-shadow:0 16px 44px rgba(0,0,0,.34),0 0 24px rgba(16,185,129,.08);
 }
