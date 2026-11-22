@@ -4,7 +4,8 @@ import Shell from "@/components/Shell";
 import { API_URL, getToken } from "@/lib/api";
 
 async function download(path:string,filename:string){
- const response=await fetch(`${API_URL}${path}`,{headers:{Authorization:`Bearer ${getToken()}`}});
+ const requestUrl=API_URL ? `${API_URL}${path}` : `/api${path}`;
+ const response=await fetch(requestUrl,{headers:{Authorization:`Bearer ${getToken()}`}});
  const blob=await response.blob();
  const url=URL.createObjectURL(blob); const anchor=document.createElement("a");
  anchor.href=url; anchor.download=filename; anchor.click(); URL.revokeObjectURL(url);
